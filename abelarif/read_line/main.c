@@ -6,54 +6,13 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 18:18:54 by abelarif          #+#    #+#             */
-/*   Updated: 2020/06/21 12:14:28 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/06/22 23:37:51 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
 
-int		ft_d_quotes(int i, int quotes, int d_quotes)
-{
-	if (quotes)
-		d_quotes = 0;
-	else if (d_quotes)
-		d_quotes = 0;
-	else if (d_quotes == 0)
-		d_quotes = i + 1;
-	return (d_quotes);
-}
-
-int		ft_quotes(int i, int quotes, int d_quotes)
-{
-	if (d_quotes)
-		quotes = 0;
-	else if (quotes)
-		quotes = 0;
-	else if (quotes == 0)
-		quotes = i + 1;
-	return (quotes);
-}
-
-int		ft_sym(int id, int i, int nb, int quotes, int d_quotes)
-{
-	char	sym;
-
-	if (id  == 1)
-		sym = ';';
-	if (quotes || d_quotes)
-		nb = nb;
-	else if (quotes == 0 && d_quotes == 0)
-	{
-		nb++;
-		if (id == 1 && g_line[i + 1] == sym)
-			printf("error\n");
-		if (id == 2)
-			return (1);
-	}
-	return (nb);
-}
-
-int		get_nb_points()
+int		get_nb_splits(int c, char *str)
 {
 	int		i;
 	int		d_quotes;
@@ -64,45 +23,17 @@ int		get_nb_points()
 	d_quotes = 0;
 	quotes = 0;
 	i = 0;
-	while (g_line[i])
+	while (str[i])
 	{
-		if (g_line[i] == '\"' )
+		if (str[i] == '\"' )
 			d_quotes = ft_d_quotes(i, quotes, d_quotes);
-		else if(g_line[i] == '\'')
+		else if(str[i] == '\'')
 			quotes = ft_quotes(i, quotes, d_quotes);
-		else if (g_line[i] == ';')
-			nb_points = ft_sym(1, i, nb_points, quotes, d_quotes);
+		else if (str[i] == c)
+			nb_points = ft_sym(c, str[i], nb_points, quotes, d_quotes);
 		i++;
 	}
-	// (nb_points != 0) ? (nb_points++) : (nb_points = nb_points);
 	return (nb_points);
-}
-
-int		get_len(int index_line)
-{
-	int		len;
-	int		d_quotes;
-	int		quotes;
-
-	len = 0;
-	quotes = 0;
-	d_quotes = 0;
-	while (g_line[index_line])
-	{
-		if (g_line[index_line] == '\"' )
-			d_quotes = ft_d_quotes(index_line, quotes, d_quotes);
-		else if(g_line[index_line] == '\'')
-			quotes = ft_quotes(index_line, quotes, d_quotes);
-		else if (g_line[index_line] == ';')
-		{
-			if (ft_sym(2, index_line, 0, quotes, d_quotes))
-				return (len);
-		}
-		index_line++;
-		len++;	
-	}
-	return (len);
-	
 }
 
 void	get_commands(int nb_commands)
@@ -112,7 +43,6 @@ void	get_commands(int nb_commands)
 	int		index_line;
 	int		len_cmd;
 
-
 	index_line = 0;
 	i = 0;
 	j = 0;
@@ -120,7 +50,6 @@ void	get_commands(int nb_commands)
 	while (i <= nb_commands)
 	{
 		len_cmd = get_len(index_line);
-		printf("len (%d) : %d\n", i, len_cmd);
 		g_all_commands[i] = malloc(sizeof(char) * (len_cmd + 1));
 		while (j < len_cmd)
 		{
@@ -129,7 +58,6 @@ void	get_commands(int nb_commands)
 			j++;
 		}
 		g_all_commands[i][j] = '\0';
-		printf(">>%d<< : >>%s<<\n\n", i, g_all_commands[i]);
 		i++;
 		j = 0;
 		index_line++;
@@ -137,30 +65,40 @@ void	get_commands(int nb_commands)
 	g_all_commands[i] = NULL;
 }
 
-// void	split_by_pipes()
-// {
-// 	int		i;
+void	split_by_pipe()
+{
+	int		i;
+	int		len_tab;
+	int		nb_pipe;
 
-// 	i = 0;
-// 	while ()
-// 	{
-		
-// 	}
-// }
+	len_tab = 0;
+	i = 0;
+	while (g_all_commands[i] != NULL)
+		len_tab++;
+	g_all_details_commands = malloc(sizeof(t_all_commands) * (len_tab + 1));
+	while (g_all_commands[i])
+	{
+		g_all_details_commands[i].nb_pipes = get_nb_splits('|', g_all_commands[i]);
+		g_all_details_commands[i].cmd_details = malloc(sizeof(t_cmd_details)
+		* (g_all_details_commands[i].nb_pipes + 2));
+	}
+}
 
 int		main()
 {
 	int		nb_commands;
-
+	int		i = 0;
 	nb_commands = 0;
-	g_line = "clear ; gcc;";
-	nb_commands = get_nb_points();
+	g_line = "clear ; ;; gcc;";
+	nb_commands = get_nb_splits(';', g_line);
 	
-	printf("%d\n", nb_commands);
-	printf("\n************************************\n\n");
-
 	get_commands(nb_commands);
-	// split_by_pipes();
-
+	split_by_pipe();
+	// while (g_all_commands[i])
+	// {
+	// 	printf(">>%s<<\n", g_all_commands[i]);
+	// 	i++;
+	// }
+	// printf(">>%s<<\n", g_all_commands[i]);
 	return (0);
 }
