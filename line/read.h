@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/23 12:13:38 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/26 19:05:20 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ struct s_splitpoint
 struct s_command
 {
 	char		*command;
+	char		*cmd;
+	int			bin;
+	char		**args;
+	char		**opts;
+	int			n_redir;
+	int			*redir;
+	char		**redir_to;
 	t_command	*next;
 };
 
