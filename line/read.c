@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:28 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/18 20:44:50 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/23 12:15:26 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,25 @@ t_splitpoint	*add(char *str, t_splitpoint *split_point)
 	return (newsplit);
 }
 
-// void	show_all(t_splitpoint *split_point)
-// {
-// 	int	i;
+void	show_all(t_splitpoint *split_point)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (split_point)
-// 	{
-// 		printf("%s\n", split_point->long_command);
-// 		split_point = split_point->next;
-// 		i++;
-// 	}
-// 	printf("%d\n", i);
-// }
+	i = 0;
+	while (split_point)
+	{
+		printf("%s\n", split_point->long_command);
+		split_point = split_point->next;
+		i++;
+	}
+	printf("%d\n", i);
+}
 
 int	ft_line_manipulation(char *line)
 {
 	t_splitpoint	*split_point;
-	static int	nb;
-	char		*long_command;
+	static int		nb;
+	char			*long_command;
 
 	split_point = NULL;
 	while ((long_command = get_split(line, ';')) != NULL)
@@ -93,7 +93,8 @@ int	ft_line_manipulation(char *line)
 		split_point = add(long_command, split_point);
 		nb++;
 	}
-	// show_all(split_point);
+	list_reverse(&split_point);
+	ft_split_pipe(split_point);
 }
 
 int	ft_error(int error)
@@ -112,4 +113,3 @@ int	main()
 		return (ft_error(-1));
 	return (0);
 }
-

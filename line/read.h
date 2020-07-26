@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/18 15:40:43 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/23 12:13:38 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 
 typedef struct s_splitpoint t_splitpoint;
 typedef	struct s_command t_command;
+
+void			show_all(t_splitpoint *split_point);
+void			ft_split_pipe(t_splitpoint *split_point);
+int				manipquotes(int quote, int quote_type);
+char			*get_split(char *line, int split_by);
+void			list_reverse(t_splitpoint **split_point);
 
 struct s_splitpoint
 {
