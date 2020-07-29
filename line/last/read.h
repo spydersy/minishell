@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/26 19:05:20 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/27 09:29:34 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../../libft/libft.h"
-#include "get_next_line.h"
+#include "./libft/libft.h"
+#include "./get_next_line/get_next_line.h"
 
 typedef struct s_splitpoint t_splitpoint;
 typedef	struct s_command t_command;
@@ -27,7 +27,8 @@ void			ft_split_pipe(t_splitpoint *split_point);
 int				manipquotes(int quote, int quote_type);
 char			*get_split(char *line, int split_by);
 void			list_reverse(t_splitpoint **split_point);
-
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+int				get_next_line(int fd, char **line);
 struct s_splitpoint
 {
 	char		*long_command;

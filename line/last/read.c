@@ -6,12 +6,12 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:28 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/26 19:49:16 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/27 09:22:56 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "read.h"
-#include "get_next_line.h"
+// #include ".get_next_line.h"
 
 int				manipquotes(int quote, int quote_type)
 {
@@ -34,17 +34,15 @@ char			*get_split(char *line, int split_by)
 {
 	static int	i = -1;
 	static int	old;
-	static int	split = 59;
 	int			quote;
 
 	quote = 0;
 	old = i + 1;
-	if (split != split_by)
-	{
-		split = split_by;
-		i = -1;
-		old = i + 1;
-	}
+	// if (split != split_by)
+	// {
+	// 	split = split_by;
+	// 	old = i + 1;
+	// }
 	while (line[++i])
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -53,7 +51,10 @@ char			*get_split(char *line, int split_by)
 			return (ft_substr(line, old, i - old));
 	}
 	if (!line[i] && i == old)
+	{
+		i = -1;
 		return (NULL);
+	}
 	else if (!line[i] && i != old)
 		return (ft_substr(line, old, i));
 }
