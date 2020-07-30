@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.h                                             :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/27 09:29:34 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/29 21:59:10 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef READ_H
-#define READ_H
+#ifndef MINISHELL_H
+#define MINISHELL_H
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -22,13 +22,17 @@
 typedef struct s_splitpoint t_splitpoint;
 typedef	struct s_command t_command;
 
-void			show_all(t_splitpoint *split_point);
-void			ft_split_pipe(t_splitpoint *split_point);
-int				manipquotes(int quote, int quote_type);
+int				ft_error(int error);
+int				ft_line_manipulation(char *line);
 char			*get_split(char *line, int split_by);
+t_splitpoint	*add_split_point(char *str, t_splitpoint *split_point);
 void			list_reverse(t_splitpoint **split_point);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-int				get_next_line(int fd, char **line);
+t_command		*add_commands(char *command, t_command *all_commands);
+void			ft_split_pipe(t_splitpoint *split_point);
+void			ft_split_commands(char *long_command);
+char			*get_cmd(char *command);
+int				manipquotes(int quote, int quote_type);
+
 struct s_splitpoint
 {
 	char		*long_command;
