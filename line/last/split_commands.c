@@ -6,24 +6,24 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 20:18:40 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/30 09:53:22 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/30 10:42:30 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			manip_commands(t_command *all_commands)
+void			manip_commands(t_command *commands)
 {
-	while (all_commands != NULL)
+	while (commands != NULL)
 	{
-		all_commands->cmd = get_cmd(all_commands->command);
-		all_commands->bin = ((ft_strncmp(all_commands->cmd, "/bin/", 5) == 0)
+		commands->cmd = get_cmd(commands->command);
+		commands->bin = ((ft_strncmp(commands->cmd, "/bin/", 5) == 0)
 		? (1) : (0));
 		// all_commands->args = get_args(all_commands->command, all_commands);
-		all_commands->opts = get_opts(all_commands->command);
-		all_commands->n_redir = get_n_redir(all_commands->command);
-		all_commands->redir = get_redir(all_commands->command);
-		all_commands->redir_to = get_redir_to(all_commands->command);
+		commands->opts = get_opts(commands->command);
+		commands->n_redir = get_n_redir(commands->command);
+		commands->redir = get_redir(commands->command, commands->n_redir);
+		commands->redir_to = get_redir_to(commands->command,commands->n_redir);
 	}
 }
 
