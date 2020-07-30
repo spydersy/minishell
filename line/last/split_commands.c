@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 20:18:40 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/30 10:42:30 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:00:05 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void			manip_commands(t_command *commands)
 		commands->n_redir = get_n_redir(commands->command);
 		commands->redir = get_redir(commands->command, commands->n_redir);
 		commands->redir_to = get_redir_to(commands->command,commands->n_redir);
+		
+		commands = commands->next;
 	}
 }
 
