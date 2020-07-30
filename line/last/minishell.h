@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/29 21:59:10 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/30 09:15:13 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void			ft_split_pipe(t_splitpoint *split_point);
 void			ft_split_commands(char *long_command);
 char			*get_cmd(char *command);
 int				manipquotes(int quote, int quote_type);
+int				skip_cmd(char *command);
 
 struct s_splitpoint
 {

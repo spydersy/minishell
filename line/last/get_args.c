@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 19:18:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/30 08:31:14 by abelarif         ###   ########.fr       */
+/*   Created: 2020/07/30 09:19:32 by abelarif          #+#    #+#             */
+/*   Updated: 2020/07/30 09:53:34 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// int				main(int argc, char *argv[], char *envp[])
+// char	**get_args(char *command, t_command *all_commands)
 // {
-// 	char		*line;
+// 	int 	i;
+// 	int		quote;
 
-// 	if (get_next_line(0, &line) == -1)
-// 		return (ft_error(-1));
-// 	if (ft_line_manipulation(line) == -1)
-// 		return (ft_error(-1));
-// 	return (0);
+// 	i = skip_cmd(command);
+// 	quote = 0;
+// 	while (command[i] == ' ' || command[i] == '\t')
+// 		i++;
+// 	if ((ft_strncmp(all_commands->cmd, "echo", 4) == 0)
+// 	|| (ft_strncmp(all_commands->cmd, "/bin/echo", 9) == 0))
+// 	{
+// 		while
+// 	}
+// 	else
+// 	{
+// 		/* code */
+// 	}
+	
 // }
