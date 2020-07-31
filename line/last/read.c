@@ -6,21 +6,21 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:28 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/29 20:09:40 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 16:58:01 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			show_all(t_splitpoint *split_point)
+void			show_all(t_splitpoint *g_splitpt)
 {
 	int	i;
 
 	i = 0;
-	while (split_point)
+	while (g_splitpt)
 	{
-		printf("%s\n", split_point->long_command);
-		split_point = split_point->next;
+		printf("%s\n", g_splitpt->long_command);
+		g_splitpt = g_splitpt->next;
 		i++;
 	}
 	printf("%d\n", i);
@@ -28,17 +28,16 @@ void			show_all(t_splitpoint *split_point)
 
 int				ft_line_manipulation(char *line)
 {
-	t_splitpoint	*split_point;
 	static int		nb;
 	char			*long_command;
 
-	split_point = NULL;
+	g_splitpt = NULL;
 	while ((long_command = get_split(line, ';')) != NULL)
 	{
-		split_point = add_split_point(long_command, split_point);
+		g_splitpt = add_g_splitpt(long_command, g_splitpt);
 		nb++;
 	}
-	list_reverse(&split_point);
-	show_all(split_point);
-	ft_split_pipe(split_point);
+	list_reverse(&g_splitpt);
+	show_all(g_splitpt);
+	ft_split_pipe(g_splitpt);
 }

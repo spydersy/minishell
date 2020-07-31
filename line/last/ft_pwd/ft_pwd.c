@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/30 09:19:32 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/31 17:13:17 by abelarif         ###   ########.fr       */
+/*   Created: 2020/07/30 20:15:40 by abelarif          #+#    #+#             */
+/*   Updated: 2020/07/30 21:43:20 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
+#include "../minishell.h"
+#include <stdio.h>
 
-// char	**get_args(char *command, t_command *g_command)
-// {
-// 	int 	i;
-// 	int		quote;
+int		main(int argc, char *argv[], char *envp[])
+{
+	char	*buf;
 
-// 	i = skip_cmd(command);
-// 	quote = 0;
-// 	while (command[i] == ' ' || command[i] == '\t')
-// 		i++;
-// 	if ((ft_strncmp(g_command->cmd, "echo", 4) == 0)
-// 	|| (ft_strncmp(g_command->cmd, "/bin/echo", 9) == 0))
-// 	{
-// 		while
-// 	}
-// 	else
-// 	{
-// 		/* code */
-// 	}
-	
-// }
+	buf = getcwd(buf, 800);
+	if (buf == NULL)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (-1);
+	}
+	printf("11");
+	ft_putstr_fd(buf, 1);
+	return (0);
+}
+

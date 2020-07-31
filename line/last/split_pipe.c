@@ -6,21 +6,19 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 18:20:12 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/29 20:22:25 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 16:57:36 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			ft_split_pipe(t_splitpoint *split_point)
+void			ft_split_pipe(t_splitpoint *g_splitpt)
 {
 	int i = 0;
-	while (split_point != NULL)
+	while (g_splitpt != NULL)
 	{
-		// printf("voiiiiiiila %d\n", ++i);
-		// printf("voiiiiiiila check %s\n", split_point->long_command);
-		ft_split_commands(split_point->long_command);
-		split_point = split_point->next;
+		ft_split_commands(g_splitpt->long_command);
+		g_splitpt = g_splitpt->next;
 	}
 }
 

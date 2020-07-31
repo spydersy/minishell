@@ -6,33 +6,33 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 19:36:29 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/29 20:09:15 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:02:29 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_command		*add_commands(char *command, t_command *all_commands)
+t_command		*add_commands(char *command, t_command *g_command)
 {
 	t_command	*newcommand;
 
 	newcommand = malloc(sizeof(t_command));
 	newcommand->command = command;
-	newcommand->next = all_commands;
+	newcommand->next = g_command;
 	return (newcommand);
 }
 
-t_splitpoint	*add_split_point(char *str, t_splitpoint *split_point)
+t_splitpoint	*add_g_splitpt(char *str, t_splitpoint *g_splitpt)
 {
 	t_splitpoint	*newsplit;
 
 	newsplit = malloc(sizeof(t_splitpoint));
 	newsplit->long_command = str;
-	newsplit->next = split_point;
+	newsplit->next = g_splitpt;
 	return (newsplit);
 }
 
-void			list_reverse(t_splitpoint **split_point)
+void			list_reverse(t_splitpoint **g_splitpt)
 {
 	t_splitpoint	*prev;
 	t_splitpoint	*current;
@@ -40,7 +40,7 @@ void			list_reverse(t_splitpoint **split_point)
 
 	prev = NULL;
 	next = NULL;
-	current = *split_point;
+	current = *g_splitpt;
 	while (current != NULL)
 	{
 		next = current->next;
@@ -48,7 +48,7 @@ void			list_reverse(t_splitpoint **split_point)
 		prev = current;
 		current = next;
 	}
-	*split_point = prev;
+	*g_splitpt = prev;
 }
 
 int				manipquotes(int quote, int quote_type)

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 20:18:40 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/30 12:00:05 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:17:39 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,24 @@ void			manip_commands(t_command *commands)
 		commands->cmd = get_cmd(commands->command);
 		commands->bin = ((ft_strncmp(commands->cmd, "/bin/", 5) == 0)
 		? (1) : (0));
-		// all_commands->args = get_args(all_commands->command, all_commands);
 		commands->opts = get_opts(commands->command);
 		commands->n_redir = get_n_redir(commands->command);
 		commands->redir = get_redir(commands->command, commands->n_redir);
 		commands->redir_to = get_redir_to(commands->command,commands->n_redir);
-		
+		// redirect_to_cmd(commands);       choice binaries
 		commands = commands->next;
 	}
 }
 
 void			ft_split_commands(char *long_command)
 {
-	t_command	*all_commands;
 	char		*command;
 
-	all_commands = NULL;
+	g_command = NULL;
 	while ((command = get_split(long_command, '|')) != NULL)
 	{
-		all_commands = add_commands(command, all_commands);
-		// printf(">>%s<<\n", command);
+		g_command = add_commands(command, g_command);
 	}
-	list_reverse(all_commands);
-	manip_commands(&all_commands);
+	list_reverse(g_command);
+	manip_commands(&g_command);
 }
