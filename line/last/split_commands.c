@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 20:18:40 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/31 17:17:39 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:32:43 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void			ft_split_commands(char *long_command)
 	{
 		g_command = add_commands(command, g_command);
 	}
-	list_reverse(g_command);
-	manip_commands(&g_command);
+	list_reversecmd(&g_command);
+	manip_commands(g_command);
 }

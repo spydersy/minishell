@@ -23,8 +23,8 @@ int		main(int argc, char *argv[], char *envp[])
 		ft_putstr_fd("Error\n", 2);
 		return (-1);
 	}
-	printf("11");
 	ft_putstr_fd(buf, 1);
+	ft_putchar_fd('\n', 1);
 	return (0);
 }
 

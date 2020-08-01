@@ -6,13 +6,13 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 18:43:18 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/30 19:02:40 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:23:40 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+// #include "minishell.h"
 
-void	redirect_to_cmd(t_command *commands)
-{
-	if ()
-}
+// void	redirect_to_cmd(t_command *commands)
+// {
+// 	if ()
+// }

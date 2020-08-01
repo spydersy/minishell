@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/31 17:16:43 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/07/31 17:30:32 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int				ft_error(int error);
 int				ft_line_manipulation(char *line);
 char			*get_split(char *line, int split_by);
 t_splitpoint	*add_g_splitpt(char *str, t_splitpoint *g_splitpt);
-void			list_reverse(t_splitpoint **g_splitpt);
+void			list_reversept(t_splitpoint **g_splitpt);
 t_command		*add_commands(char *command, t_command *g_command);
 void			ft_split_pipe(t_splitpoint *g_splitpt);
 void			ft_split_commands(char *long_command);
@@ -38,6 +38,8 @@ char			**get_redir_to(char *command, int nb);
 int				get_n_redir(char *command);
 int				*get_redir(char *command, int n_redir);
 char			**get_opts(char	*command);
+void			list_reversecmd(t_command **g_command);
+
 struct s_splitpoint
 {
 	char		*long_command;
