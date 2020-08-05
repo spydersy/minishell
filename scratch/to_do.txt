@@ -2,12 +2,12 @@
 
 - echo        ======>
 - cd          ======>
-- pwd         ======>
+- pwd         ======> DONE   -invalid option
 - export      ======>
 - unset       ======>
-- env         ======>
-- exit        ======> DONE
-- redir >     ======>
+- env         ======> DONE   -No such file or directory 
+- exit        ======> DONE   100%
+- redir >     ======>        
 - redir >>    ======>
 - redir <     ======>
 - pipes |     ======>
