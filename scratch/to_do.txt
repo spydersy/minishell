@@ -1,0 +1,16 @@
+#commands :
+
+- echo        ======>
+- cd          ======>
+- pwd         ======>
+- export      ======>
+- unset       ======>
+- env         ======>
+- exit        ======> DONE
+- redir >     ======>
+- redir >>    ======>
+- redir <     ======>
+- pipes |     ======>
+- ctrl-C      ======>
+- ctrl-D      ======>
+- ctrl-\      ======>
