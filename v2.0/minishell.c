@@ -5,64 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 19:18:57 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 11:20:55 by abelarif         ###   ########.fr       */
+/*   Created: 2020/08/07 11:23:12 by abelarif          #+#    #+#             */
+/*   Updated: 2020/08/07 13:49:48 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	type_prompt()
+void	type_prompt(void)
 {
-	static int		first_time = 1;
-	if (first_time)
+	static int	first_time = 1;
+	if (first_time == 1)
 	{
-		write(1, " \e[1;1H\e[2J", ft_strlen(" \e[1;1H\e[2J"));
+		ft_putstr_fd(" \e[1;1H\e[2J", 1);
 		first_time = 0;
 	}
-	write(1, "MY_SHELL >>", 11);
+	ft_putstr_fd("minishell $ ", 1);
 }
 
-void	prompt_signal()
+int		main(int argc, char *argv[], char *envp[])
 {
-	write(1, "\nMY_SHELL >>", 13);
-}
+	// pid_t	child;
 
-int	skip_empty(char	*line)
-{
-	int		i;
-
-	i = 0;
-	while (line[i])
-	{
-		if (!(line[i] == ' ' || line[i] == '\t'))
-			return (i);
-	}
-	return (i);
-}
-
-int		check_exit()
-{
-	int		nb;
-	char	**exit;
-
-	// exit = ft_split(g_line, ' ');
-
-	if (ft_strncmp("exit", exit[0]))
-		return (0);
-	
-}
-int		main(int argc, char *rgv[], char *envp[])
-{
-	// siganl();
 	signal(SIGINT, prompt_signal);
-	while (1)
+	init_var();
+	if (argc && argv && envp)
 	{
-		type_prompt();
-		get_next_line(0, &g_line);
-		if (check_exit() == 1)
+		while (1)
 		{
-			ft_exit();
+			type_prompt();
+			get_next_line(0, &g_line);
+			// if (check_exit() == 1)
+			// {
+			// 	ft_exit(); // SET LATER
+			// }
+			if (ignore_line() == 0)
+			{
+				// if (child != 0)
+				// {
+					ft_line();
+				// }
+			}
 		}
 	}
 	return (0);

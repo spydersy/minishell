@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/18 15:40:42 by abelarif          #+#    #+#             */
-/*   Updated: 2020/07/31 17:30:32 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/07 11:11:14 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <signal.h>
 #include "./libft/libft.h"
 #include "./get_next_line/get_next_line.h"
 
@@ -61,4 +62,5 @@ struct s_command
 
 t_splitpoint	*g_splitpt;
 t_command		*g_command;
+char			*g_line;
 #endif
