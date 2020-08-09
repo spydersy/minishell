@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 16:33:21 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 16:51:26 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/08 19:56:24 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		get_mycmd(char *cmd)
 
 int		get_bin(char *cmd)
 {
-	int		i;
+	// int		i;
 
 	if (ft_strncmp(cmd, "/bin/", 5) == 0)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 14:22:47 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 16:33:58 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/08 20:35:01 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ void	pipe_split(char *line)
 	while ((command = get_split(line, '|', 0)) != NULL)
 	{
 		g_command = add_command(command, g_command);
+		get_details(g_command);
 	}
 	list_revrsecmd(&g_command);
-	while (g_command != NULL)
-	{
-		get_details(g_command);
-		g_command = g_command->next;
-	}
 }

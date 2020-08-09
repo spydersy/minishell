@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 11:23:12 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 13:49:48 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/08 20:04:40 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	type_prompt(void)
 
 int		main(int argc, char *argv[], char *envp[])
 {
-	// pid_t	child;
-
 	signal(SIGINT, prompt_signal);
 	init_var();
 	if (argc && argv && envp)

@@ -6,12 +6,12 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 11:23:23 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 16:42:28 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/08 20:03:53 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
-#define MINISHELL_H
+#define	MINISHELL_H
 
 #include "./libft/libft.h"
 #include "./GNL/get_next_line.h"
@@ -65,6 +65,8 @@ void							ft_line();
 void							first_split();
 void							pipe_split(char *line);
 char							*get_split(char *line, int split_by, int quote);
+void							get_details(t_command *g_command);
+int								manip_cmd(t_command *g_command);
 // int								manipquotes(int quote, int quote_type);
 
 #endif

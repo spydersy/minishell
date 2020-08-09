@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 13:12:39 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/07 16:16:50 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/08 20:24:30 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,5 @@ void				first_split()
 	char	*split;
 
 	while ((split = get_split(g_line, ';', 0)) != NULL)
-	{
-		// printf("%s\n", first_split);
 		g_linecommand = add_lc(split, g_linecommand);
-	}
 }
