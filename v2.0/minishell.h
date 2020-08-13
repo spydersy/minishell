@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/07 11:23:23 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/08 20:03:53 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/09 10:01:32 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdio.h>
+#include <errno.h>
 
 typedef struct s_linecommand t_linecommand;
 typedef	struct s_command t_command;
@@ -33,6 +34,8 @@ struct s_command
 {
 	char		*command;
 	
+	int			id;
+	int			nb_cmd;
 	char		*cmd;
 	int			mycmd;
 	int			bin;

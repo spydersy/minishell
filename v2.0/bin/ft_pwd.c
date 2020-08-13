@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/07 12:58:17 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/10 10:10:13 by abelarif         ###   ########.fr       */
+/*   Created: 2020/08/10 10:17:16 by abelarif          #+#    #+#             */
+/*   Updated: 2020/08/10 10:38:06 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	ft_line()
+int		main()
 {
-	t_linecommand	*linecommand;
-	// t_command		*command;
+	char	*buf;
 
-	first_split();
-	list_reverselc(&g_linecommand);
-	linecommand = g_linecommand;
-	while (linecommand)
+	buf = NULL;
+	buf = getcwd(buf, 500);
+	if (buf == NULL)
 	{
-		pipe_split(linecommand->linecommand);
-		// manip_cmd(command);
-		linecommand = linecommand->next;
+		ft_putendl_fd(strerror(errno), 2);
+		return (-1);
 	}
+	ft_putendl_fd(buf, 1);
+	return (0);
 }

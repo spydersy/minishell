@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   line.c                                             :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/07 12:58:17 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/10 10:10:13 by abelarif         ###   ########.fr       */
+/*   Created: 2020/08/10 10:17:34 by abelarif          #+#    #+#             */
+/*   Updated: 2020/08/10 10:53:31 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-void	ft_line()
+int		main(int argc, char *argv[])
 {
-	t_linecommand	*linecommand;
-	// t_command		*command;
+	int	return_chdir;
 
-	first_split();
-	list_reverselc(&g_linecommand);
-	linecommand = g_linecommand;
-	while (linecommand)
+	if (argc > 2)
 	{
-		pipe_split(linecommand->linecommand);
-		// manip_cmd(command);
-		linecommand = linecommand->next;
+		ft_putendl_fd("too many arguments", 2);
 	}
+	else if (argc == 0)
+		return_chdir = chdir("/root");
+	else
+		chdir(argv[0]);
+	printf("%d\n", return_chdir);
+	if (return_chdir == -1)
+	{
+		ft_putendl_fd(strerror(errno), 2);
+		return (-1);
+	}
+	return (0);
 }
