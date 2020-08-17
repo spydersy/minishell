@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 10:17:34 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/13 12:15:14 by abelarif         ###   ########.fr       */
+/*   Created: 2020/08/13 14:26:19 by abelarif          #+#    #+#             */
+/*   Updated: 2020/08/13 14:57:03 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int		main(int argc, char *argv[])
+int		main(int argc, char *argv[], char *envp[])
 {
-	int	return_chdir;
-
-	if (argc > 2)
-	{
-		ft_putendl_fd("too many arguments", 2);
-	}
-	else if (argc == 0)
-		return_chdir = chdir("/root");
-	else
-		chdir(argv[0]);
-	printf("%d\n", return_chdir);
-	if (return_chdir == -1)
-	{
-		ft_putendl_fd(strerror(errno), 2);
-		return (-1);
-	}
+	char *args[2] = {"kh $SHELL iktf $ bfgn", NULL};
+	execve("./ft_echo", args, envp);
 	return (0);
 }
