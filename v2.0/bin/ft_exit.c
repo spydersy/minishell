@@ -6,8 +6,14 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 10:17:25 by abelarif          #+#    #+#             */
-/*   Updated: 2020/08/10 10:17:27 by abelarif         ###   ########.fr       */
+/*   Updated: 2020/08/19 17:33:58 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int		main(int argc, char *argv[], char *envp[])
+{
+	
+	return (0);
+}
