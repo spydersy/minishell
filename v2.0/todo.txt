@@ -1,9 +1,0 @@
-fnctions : 
-
-echo with option -nù
-cd relative or absolute path
-pwd
-export 
-unset
-env
-exit
