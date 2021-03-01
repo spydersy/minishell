@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:28:10 by abelarif          #+#    #+#             */
-/*   Updated: 2021/02/27 15:51:45 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/01 16:19:03 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,9 @@
 void		extract_content(char *line)
 {
 	t_backslash		backslash;
-	t_words			words;
 
 	backslash.nb_backslash = count_bslash(line);
 	backslash.backslash_index = get_bslash_index(line, backslash.nb_backslash);
-
-	printf("\n\ncccccccccccccccccccccccccccccccccccccccccccccccccccccc\n");
-	printf("nb : %d\n", backslash.nb_backslash);
-	
-	int		i = -1;
-	while (++i < backslash.nb_backslash)
-	{
-		printf("     index %d : %d\n", i, backslash.backslash_index[i]);
-	}
-	printf("\ncccccccccccccccccccccccccccccccccccccccccccccccccccccc\n\n");
-	words.nb_words = count_words(line, backslash);
 }
 
 void		extract_command(char *line)

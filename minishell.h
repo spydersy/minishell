@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:41:44 by abelarif          #+#    #+#             */
-/*   Updated: 2021/02/27 15:52:25 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/01 16:18:04 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct			s_content
 
 int						count_bslash(char *line);
 int						*get_bslash_index(char *line, int nb);
-int						count_words(char *line, t_backslash backslash);
 int						ft_error(char *description);
 void					clear_window(void);
 void					prompt(void);
