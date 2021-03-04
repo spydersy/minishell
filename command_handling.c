@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:28:10 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 04:14:14 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/04 06:17:25 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int				skip_redirections(char *line, int index)
 	}
 	if (line[index] == '>' && c > 2)
 		ft_error("nb_redirection");
-	else if (line[index] == '<' && c > 1)
+	if (line[index] == '<' && c > 1)
 		ft_error("nb_redirection");
 	return (i);
 }
@@ -50,12 +50,16 @@ int				count_redirection(char *line)
 	{
 		if (line[i] == '\'' || line[i] == '\"')
 			quote = set_quote_value(line[i], quote);
-		else if ((line[i] == '>' || line[i] == '<')
-		&& line[i - 1] != '\\' && !quote.double_quote && !quote.simple_quote)
+		else if ((line[i] == '>' || line[i] == '<'))
 		{
-			c++;
-			if (line[i] == '>')
-			i = skip_redirections(line , i);
+			if ((i >= 1 && line[i - 1] != '\\'
+			&& !quote.double_quote && !quote.simple_quote) || i == 0)
+			{
+				c++;
+				i = skip_redirections(line , i);
+				if (!line[i])
+					break ;
+			}
 		}
 	}
 	printf("         nb redirection : %d\n", c);
@@ -92,7 +96,7 @@ void		extract_command(char *line)
 		c_separator.content = splitSep(line, c_separator.separator_index, c_separator.nb_separator);
 	while (c_separator.content[++i])
 	{
-		printf("     command %d : >>%s<<\n", i, c_separator.content[i]);
+		printf("     command %d : $$%s$$\n", i, c_separator.content[i]);
 		words[i] = extract_content(c_separator.content[i]);
 	}
 }
@@ -113,7 +117,7 @@ void        extract_command_line(char *line)
 	while (cl_separator.content[++i])
 	{
 		printf("\n\n**************************************************\n");
-		printf("command line %d : >>%s<<\n", i, cl_separator.content[i]);
+		printf("command line %d : $$%s$$\n", i, cl_separator.content[i]);
 		extract_command(cl_separator.content[i]);
 		printf("**************************************************\n\n");
 	}
