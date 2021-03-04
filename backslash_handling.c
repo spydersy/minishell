@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 16:21:31 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 03:37:20 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/04 07:20:15 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int         count_bslash(char *line)
 	i = -1;
 	nb = 0;
 	skip = "abefnrtv'\"\\?";
-	quote.double_quote = false;
-	quote.simple_quote = false;
+	 
+	quote = init_quote();
 	while (line[++i])
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -56,8 +56,8 @@ int         *get_bslash_index(char *line, int nb)
 	c = -1;
 	i = -1;
 	skip = "abefnrtv'\"\\?";
-	quote.double_quote = false;
-	quote.simple_quote = false;
+	 
+	quote = init_quote();
 	if ((index = malloc(sizeof(int) * nb)) == NULL)
 		ft_error(NULL);
 	while (line[++i])

@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:41:44 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 03:59:32 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/04 07:15:39 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@
 
 typedef struct			s_quote
 {
-	bool            	simple_quote;
-	bool            	double_quote;
+	bool            	s_quote;
+	bool            	d_quote;
 }               		t_quote;
 
 typedef struct			s_backslash
@@ -84,6 +84,7 @@ void    				extract_command_line(char *line);
 char					*read_line(void);
 char					**splitSep(char *line, int *sepIndex, int nbSep);
 t_quote					set_quote_value(char quote_type, t_quote to_quote);
+t_quote					init_quote(void);
 t_separator				get_separator_index(char *line, char separator_type);
 
 #endif

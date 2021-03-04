@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:28:10 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 06:17:25 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/04 07:26:14 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ int				count_redirection(char *line)
 
 	i = -1;
 	c = 0;
-	quote.simple_quote = false;
-	quote.double_quote = false;
-	
+	quote = init_quote();
+	 
 	while (line[++i])
 	{
 		if (line[i] == '\'' || line[i] == '\"')
@@ -53,7 +52,7 @@ int				count_redirection(char *line)
 		else if ((line[i] == '>' || line[i] == '<'))
 		{
 			if ((i >= 1 && line[i - 1] != '\\'
-			&& !quote.double_quote && !quote.simple_quote) || i == 0)
+			&& !quote.d_quote && !quote.s_quote) || i == 0)
 			{
 				c++;
 				i = skip_redirections(line , i);
@@ -62,8 +61,36 @@ int				count_redirection(char *line)
 			}
 		}
 	}
-	printf("         nb redirection : %d\n", c);
 	return (c);
+}
+
+int		*redirection_index(char *line, int nb)
+{
+	int			i;
+	int			*index;
+	t_quote		quote;
+	int			c;
+
+	c = -1;
+	i = -1;
+	quote = init_quote();
+	if (!(index = malloc(sizeof(int) * nb)))
+		ft_error("malloc");
+	while (line[++i])
+	{
+		if (line[i] == '\'' || line[i] == '\"')
+			quote = set_quote_value(line[i], quote);
+		else if ((line[i] == '>' || line[i] == '<')
+		&& ((i >= 1 && line[i - 1] != '\\'
+		&& !quote.d_quote && !quote.s_quote) || i == 0))
+		{
+			index[++c] = i;
+			i = skip_redirections(line , i);
+			if (!line[i])
+				break ;
+		}
+	}
+	return (index);
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +103,14 @@ t_words		extract_content(char *line)
 	backslash.nb_backslash = count_bslash(line);
 	backslash.backslash_index = get_bslash_index(line, backslash.nb_backslash);
 	words.nb_redirection = count_redirection(line);
-	// words.redir_index = redirection_index(line, words.nb_redirection);
+	words.redir_index = redirection_index(line, words.nb_redirection);
+
+	int	i = -1;
+	while (++i < words.nb_redirection)
+	{
+		printf("index redirection%d : %d \n", i, words.redir_index[i]);
+	}
+
 	return (words);
 }
 
