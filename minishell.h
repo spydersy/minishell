@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:41:44 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 07:15:39 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/05 11:40:32 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef	struct			s_words
 	int					nb_redirection;
 	int					*redir_index;
 	char				**words;
-	int					**types;
+	int					*types;
 }						t_words;
 
 typedef struct 			s_separator
@@ -76,7 +76,6 @@ typedef struct			s_content
 
 int						count_bslash(char *line);
 int						*get_bslash_index(char *line, int nb);
-int						count_words(char *line, t_backslash backslash);
 int						ft_error(char *description);
 void					clear_window(void);
 void					prompt(void);

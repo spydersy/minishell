@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:28:10 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 07:26:14 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/03/05 11:55:55 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,58 @@ int		*redirection_index(char *line, int nb)
 	return (index);
 }
 
+int			*redirection_type(char *line, int *index, int nb)
+{
+	int		i;
+	int		c;
+	int		*type;
+
+	i =-1;
+	c = -1;
+	if (!(type = malloc(sizeof(int) * nb)))
+		ft_error("malloc");
+	while (++i < nb)
+	{
+		if (line[index[i]] == '<')
+		{
+			type[++c] = REDI0;
+		}
+		else if (line[index[i]] == '>' && line[index[i] + 1] == '>')
+		{
+			type[++c] = REDO1;
+		}
+		else if (line[index[i]] == '>' && line[index[i] + 1] != '>')
+		{
+			type[++c] = REDO0;
+		}
+	}
+	return (type);
+}
+
 //////////////////////////////////////////////////////////////////////////////////
+
+int			count_words(char *line, int nb_redir, int *redir_index, int *redir_type)
+{
+	int		i;
+	t_quote	quote;
+
+	i = -1;
+	quote = init_quote();
+	while (line[++i])
+	{
+		
+	}
+}
+
+// void		print_redir(int type)
+// {
+	// if (type == REDI0)
+		// printf("type : REDI0 < \n");
+	// else if (type == REDO0)
+		// printf("type : REDO0 > \n");
+	// else if (type == REDO1)
+		// printf("type : REDO1 >> \n");
+// }
 
 t_words		extract_content(char *line)
 {
@@ -104,12 +155,14 @@ t_words		extract_content(char *line)
 	backslash.backslash_index = get_bslash_index(line, backslash.nb_backslash);
 	words.nb_redirection = count_redirection(line);
 	words.redir_index = redirection_index(line, words.nb_redirection);
+	words.types = redirection_type(line, words.redir_index, words.nb_redirection);
+	words.nb_words = words.nb_redirection + count_words(line, words.nb_redirection, words.redir_index, words.types);
 
-	int	i = -1;
-	while (++i < words.nb_redirection)
-	{
-		printf("index redirection%d : %d \n", i, words.redir_index[i]);
-	}
+	// int		i = -1;
+	// while (++i < words.nb_redirection)
+	// {
+		// print_redir(words.types[i]);
+	// }
 
 	return (words);
 }
