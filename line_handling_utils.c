@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 20:34:22 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/04 07:23:47 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/05/01 08:46:06 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int					count_separators(char *line, char separator)
 	while (line[++i])
 	{
 		if ((line[i] == 39 || line[i] == 34))
-			if (i >= 1 && line[i - 1] != '\\')
+			if (count_bs(line, i) % 2 == 0)
 				quote = set_quote_value(line[i], quote);
 		if (separator == ';' && line[i] == ';' && line[i + 1] == ';')
 			ft_error("parse error near `;;'");
 		else if (line[i] == separator)
-			if (i >= 1 && line[i - 1] != '\\')
+			if (count_bs(line, i) % 2 == 0)
 				if (!quote.s_quote && !quote.d_quote)
 				c++;
 	}
@@ -83,9 +83,9 @@ t_separator			get_separator_index(char *line, char separator_type)
 		ft_error(NULL);
 	while (line[++i])
 	{
-		if ((line[i] == 39 || line[i] == 34) && i >= 1 && line[i - 1] != '\\')
+		if ((line[i] == 39 || line[i] == 34) && (count_bs(line, i) % 2 == 0))
 			quote = set_quote_value(line[i], quote);
-		else if (line[i] == separator_type && i >= 1 && line[i - 1] != '\\')
+		else if (line[i] == separator_type && (count_bs(line, i) % 2 == 0))
 			if (!quote.s_quote && !quote.d_quote)
 				separator.separator_index[++c] = i;
 	}

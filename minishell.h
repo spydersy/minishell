@@ -6,7 +6,7 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 15:41:44 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/05 11:40:32 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/05/01 08:52:31 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <signal.h>
 #include <sys/errno.h>
 #include "./libft/libft.h"
 #include "./gnl/get_next_line.h"
@@ -77,8 +78,9 @@ typedef struct			s_content
 int						count_bslash(char *line);
 int						*get_bslash_index(char *line, int nb);
 int						ft_error(char *description);
+int                 	count_bs(char *line, int index);
 void					clear_window(void);
-void					prompt(void);
+void					prompt(int sig);
 void    				extract_command_line(char *line);
 char					*read_line(void);
 char					**splitSep(char *line, int *sepIndex, int nbSep);

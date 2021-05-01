@@ -6,13 +6,28 @@
 /*   By: abelarif <abelarif@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 16:28:10 by abelarif          #+#    #+#             */
-/*   Updated: 2021/03/05 11:55:55 by abelarif         ###   ########.fr       */
+/*   Updated: 2021/05/01 08:46:39 by abelarif         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 //////////////////////////////////////////////////////////////////////////////////
+
+int                 count_bs(char *line, int index)
+{
+    int     c;
+
+    c = 0;
+    while (index-- >= 0)
+    {
+        if (line[index] == '\\')
+            c++;
+        else
+            break ;
+    }
+    return (c);
+}
 
 int				skip_redirections(char *line, int index)
 {
@@ -51,7 +66,7 @@ int				count_redirection(char *line)
 			quote = set_quote_value(line[i], quote);
 		else if ((line[i] == '>' || line[i] == '<'))
 		{
-			if ((i >= 1 && line[i - 1] != '\\'
+			if ((count_bs(line, i) % 2 == 0
 			&& !quote.d_quote && !quote.s_quote) || i == 0)
 			{
 				c++;
@@ -81,7 +96,7 @@ int		*redirection_index(char *line, int nb)
 		if (line[i] == '\'' || line[i] == '\"')
 			quote = set_quote_value(line[i], quote);
 		else if ((line[i] == '>' || line[i] == '<')
-		&& ((i >= 1 && line[i - 1] != '\\'
+		&& ((count_bs(line, i) % 2 == 0
 		&& !quote.d_quote && !quote.s_quote) || i == 0))
 		{
 			index[++c] = i;
@@ -134,6 +149,11 @@ int			count_words(char *line, int nb_redir, int *redir_index, int *redir_type)
 	{
 		
 	}
+	if (line || nb_redir || redir_index[0] || redir_type[0])
+	{
+
+	}
+	return 0;	
 }
 
 // void		print_redir(int type)
